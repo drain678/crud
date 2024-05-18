@@ -23,9 +23,9 @@ connection = psycopg2.connect(
 connection.autocommit = True
 
 
-@app.get("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+# @app.get("/")
+# def hello_world():
+#     return "<p>Hello, World!</p>"
 
 
 @app.get("/banks")
@@ -77,7 +77,7 @@ def update_bank():
     founded_in = body['founded_in']
 
     query = SQL("""
-    update games_data.games
+    update banks_data.bank
     set 
         title = {title}, 
         founded_in = {founded_in}

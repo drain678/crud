@@ -16,8 +16,8 @@ services:
   migrator:
     image: 'ghcr.io/amacneil/dbmate:2.12'
     volumes:
-      - ./migrations:/db/migrations
-    command: -u "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@host.docker.internal:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable" up
+      - ./db/migrations:/db/migrations
+    command: -u "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable" up -v
     depends_on:
       postgres:
         condition: service_healthy

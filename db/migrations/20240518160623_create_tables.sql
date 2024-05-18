@@ -66,37 +66,37 @@ INSERT INTO banks_data.transaction (amount, date_of_transaction, description_of_
     '2024-12-12',
     'ale',
     (SELECT id FROM banks_data.client WHERE first_name = 'Lyosha' and last_name = 'Zaitsev'),
-    (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov'),
+    (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov')
 ),
 (   200.0,
     '2024-08-25',
     'hello',
     (SELECT id FROM banks_data.client WHERE first_name = 'Nastya' and last_name = 'Prohochyova'),
-    (SELECT id FROM banks_data.client WHERE first_name = 'Polina' and last_name = 'Tokareva'),
+    (SELECT id FROM banks_data.client WHERE first_name = 'Polina' and last_name = 'Tokareva')
 ),
 (   300.0,
     '2023-10-11',
     'privet',
     (SELECT id FROM banks_data.client WHERE first_name = 'Nastya' and last_name = 'Prohochyova'),
-    (SELECT id FROM banks_data.client WHERE  first_name = 'Sam' and last_name = 'Komarov'),
+    (SELECT id FROM banks_data.client WHERE  first_name = 'Sam' and last_name = 'Komarov')
 ),
 (   400.0,
     '2022-05-13',
     'taxi',
     (SELECT id FROM banks_data.client WHERE first_name = 'Polina' and last_name = 'Tokareva'),
-    (SELECT id FROM banks_data.client WHERE  first_name = 'Lyosha' and last_name = 'Zaitsev'),
+    (SELECT id FROM banks_data.client WHERE  first_name = 'Lyosha' and last_name = 'Zaitsev')
 ),
 (   500.0,
     '2022-07-24',
     'obed',
     (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov'),
-    (SELECT id FROM banks_data.client WHERE  first_name = 'Polina' and last_name = 'Tokareva'),
+    (SELECT id FROM banks_data.client WHERE  first_name = 'Polina' and last_name = 'Tokareva')
 ),
 (   500.0,
     '2020-01-30',
     'obed',
     (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov'),
-    (SELECT id FROM banks_data.client WHERE  first_name = 'Lyosha' and last_name = 'Zaitsev'),
+    (SELECT id FROM banks_data.client WHERE  first_name = 'Lyosha' and last_name = 'Zaitsev')
 );
 
 
