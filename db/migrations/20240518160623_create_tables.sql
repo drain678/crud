@@ -54,6 +54,24 @@ INSERT INTO banks_data.client (first_name, last_name, phone) VALUES
 ('Nastya', 'Prohochyova', '+79194704532'),
 ('Polina', 'Tokareva', '+79197806512');
 
+INSERT INTO banks_data.transaction (amount, date_of_transaction, description_of_transaction, sender_id, receiver_id) VALUES 
+(
+    123.0,
+    '2022-05-09',
+    'transaction1',
+    (SELECT id FROM banks_data.client WHERE first_name = 'Polina' and last_name = 'Tokareva'),
+    (SELECT id FROM banks_data.client WHERE first_name = 'Nastya' and last_name = 'Prohochyova')
+),
+(
+    500.0,
+    '2022-05-10',
+    'transaction2',
+    (SELECT id FROM banks_data.client WHERE first_name = 'Lyosha' and last_name = 'Zaitsev'),
+    (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov')
+)
+
+
+
 INSERT INTO banks_data.bank_to_client (bank_id, client_id) VALUES 
 ((SELECT id FROM banks_data.bank WHERE title = 'Simga'), (SELECT id FROM banks_data.client WHERE first_name = 'Lyosha' and last_name = 'Zaitsev')),
 ((SELECT id FROM banks_data.bank WHERE title = 'Russia'), (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov')),

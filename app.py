@@ -32,12 +32,17 @@ connection.autocommit = True
 def get_banks():
     query = """
     select b.id, b.title, b.founded_in, 
-           coalesce(jsonb_agg(jsonb_build_object(
+            coalesce(jsonb_agg(jsonb_build_object(
                'id', c.id, 'first_name', c.first_name, 'last_name', c.last_name, 'phone', c.phone))
-               filter (where c.id is not null), '[]') as client
+               filter (where c.id is not null), '[]') as client, 
+            coalesce(jsonb_agg(jsonb_build_object(
+               'id', t.id, 'amount', t.amount, 'date_of_transaction', t.date_of_transaction, 'description_of_transaction', t.description_of_transaction, 'sender_id', t.sender_id, 'receiver_id', t.receiver_id))
+               filter (where t.id is not null), '[]') as transaction
     from banks_data.bank b
     left join banks_data.bank_to_client bc on b.id = bc.bank_id
     left join banks_data.client c on bc.client_id = c.id
+    left join banks_data.transaction t on t.sender_id = c.id
+    left join banks_data.transaction tr on tr.receiver_id = c.id
     group by b.id
     """
 
