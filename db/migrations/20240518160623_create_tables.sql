@@ -68,7 +68,7 @@ INSERT INTO banks_data.transaction (amount, date_of_transaction, description_of_
     'transaction2',
     (SELECT id FROM banks_data.client WHERE first_name = 'Lyosha' and last_name = 'Zaitsev'),
     (SELECT id FROM banks_data.client WHERE first_name = 'Sam' and last_name = 'Komarov')
-)
+);
 
 
 
