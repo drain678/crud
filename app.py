@@ -121,5 +121,41 @@ def delete_bank():
 
     return '', 204
 
+
+@app.get('/banks/find_by_title')
+def get_film_by_title():
+    title = request.args.get('title')
+
+    query = SQL("""
+select id, title, founded_in
+from banks_data.bank
+where title ilike {title}
+""").format(title=Literal('%' + title + '%'))
+
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        result = cursor.fetchall()
+
+    return result
+
+
+@app.get('/banks/find_by_founded_in')
+def get_film_by_year():
+    founded_in = request.args.get('founded_in')
+
+    query = SQL("""
+select id, title, founded_in
+from banks_data.bank
+where founded_in = {founded_in}
+""").format(founded_in=Literal(founded_in))
+
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        result = cursor.fetchall()
+
+    return result
+
+
+
 if __name__ == '__main__':
     app.run(port=os.getenv('FLASK_PORT'))
